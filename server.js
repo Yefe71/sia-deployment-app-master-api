@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import knex from 'knex'
 import grabStudentsData from './controllers/grabStudentsData.js'
-
+import grabStudentButtons from './controllers/grabStudentButtons.js'
 
 
 
@@ -16,11 +16,12 @@ const db = knex({
         database : 'AdvanceIT'
     }
 })
-
 const app = express();
+app.use(cors());
 
 
 app.get('/grabStudents', (req, res) => grabStudentsData(req, res, db))
+app.get('/grabStudentsButtons', (req, res) => grabStudentButtons(req, res, db))
 
 
 
