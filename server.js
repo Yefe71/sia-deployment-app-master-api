@@ -20,14 +20,11 @@ const app = express();
 app.use(cors());
 
 
+//Manage Block Page: Subject Assignment
 app.get('/grabStudents', (req, res) => grabStudentsData(req, res, db))
 app.get('/grabStudentsButtons', (req, res) => grabStudentButtons(req, res, db))
 
 
-
-
-
-// /grabStudents
 
 
 
