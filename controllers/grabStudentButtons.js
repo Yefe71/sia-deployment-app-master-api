@@ -1,7 +1,7 @@
 const grabStudentButtons = (req, res, db) => {
   const yearButton = parseInt(req.query.yearButton, 10);
   const blockButton = parseInt(req.query.blockButton, 10);
-
+console.log(yearButton, blockButton)
   if (!isNaN(yearButton) && isNaN(blockButton)) {
     console.log("first")
     db.select('*')
