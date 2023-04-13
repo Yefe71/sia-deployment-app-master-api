@@ -3,7 +3,7 @@ import cors from 'cors'
 import knex from 'knex'
 import grabStudentsData from './controllers/grabStudentsData.js'
 import grabStudentButtons from './controllers/grabStudentButtons.js'
-
+import grabProfessorsData from './controllers/grabProfessorsData.js'
 
 
 
@@ -23,6 +23,8 @@ app.use(cors());
 //Manage Block Page: Subject Assignment
 app.get('/grabStudents', (req, res) => grabStudentsData(req, res, db))
 app.get('/grabStudentsButtons', (req, res) => grabStudentButtons(req, res, db))
+
+app.get('/grabProfessors', (req, res) => grabProfessorsData(req, res, db))
 
 
 
