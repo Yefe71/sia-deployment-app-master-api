@@ -1,12 +1,12 @@
 const updateRoomsData = async (req, res, db) => {
-  console.log(req.body);
+  console.log(req.body, 'hahah');
   const rooms = req.body;
-  const roomsObjects = professors.map((room) => ({
-    room_name: rooms.room
+  const roomsObjects = rooms.map((room) => ({
+    room_name: room.roomname
   }));
 
-  console.log(roomsObjects);
-  await db('rooms').truncate(); // Clear the professors table before inserting new data
+  console.log(roomsObjects, 'hahha');
+  await db('rooms').truncate(); 
   await db('rooms').insert(roomsObjects);
 };
 

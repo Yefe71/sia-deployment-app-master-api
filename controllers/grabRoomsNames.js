@@ -1,6 +1,6 @@
 const grabRoomsNames = async (req, res, db) => {
 
-  console.log('I RAN ROOM')
+
   try {
     const fullNames = await db('rooms')
       .select(db.raw("room_name"));

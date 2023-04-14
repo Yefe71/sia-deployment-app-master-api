@@ -8,7 +8,7 @@ import updateProfessorsData from './controllers/updateProfessorsData.js'
 import grabProfessorsNames from './controllers/grabProfessorsNames.js'
 import updateRoomsData from './controllers/updateRoomsData.js'
 import grabRoomsNames from './controllers/grabRoomsNames.js'
-
+import grabRoomsData from './controllers/grabRoomsData.js'
 const db = knex({
     client: "pg",
     connection: {
@@ -25,10 +25,15 @@ app.use(express.json());
 //Manage Block Page: Subject Assignment
 app.get('/grabStudents', (req, res) => grabStudentsData(req, res, db))
 app.get('/grabStudentsButtons', (req, res) => grabStudentButtons(req, res, db))
+
 app.get('/grabProfessors', (req, res) => grabProfessorsData(req, res, db))
 app.put('/updateProfessors', (req, res) => updateProfessorsData(req, res, db))
+
 app.get('/grabProfessorsNames', (req, res) => grabProfessorsNames(req, res, db))
+
+app.get('/grabRooms', (req, res) => grabRoomsData(req, res, db))
 app.put('/updateRooms', (req, res) => updateRoomsData(req, res, db))
+
 app.get('/grabRoomsNames', (req, res) => grabRoomsNames(req, res, db))
 
 
