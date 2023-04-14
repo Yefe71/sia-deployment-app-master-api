@@ -1,4 +1,5 @@
 const grabProfessorsNames = async (req, res, db) => {
+console.log('I RAN PROF')
   try {
     const fullNames = await db('professors')
       .select(db.raw("last_name || ', ' || first_name || ' ' || middle_name as full_name"))
