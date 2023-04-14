@@ -9,6 +9,10 @@ import grabProfessorsNames from './controllers/grabProfessorsNames.js'
 import updateRoomsData from './controllers/updateRoomsData.js'
 import grabRoomsNames from './controllers/grabRoomsNames.js'
 import grabRoomsData from './controllers/grabRoomsData.js'
+import updateSchedulesData from './controllers/updateSchedulesData.js'
+import grabSchedulesData from './controllers/grabSchedulesData.js'
+
+
 const db = knex({
     client: "pg",
     connection: {
@@ -36,6 +40,9 @@ app.put('/updateRooms', (req, res) => updateRoomsData(req, res, db))
 
 app.get('/grabRoomsNames', (req, res) => grabRoomsNames(req, res, db))
 
+
+app.get('/grabSchedules', (req, res) => grabSchedulesData(req, res, db))
+app.put('/updateSchedules', (req, res) => updateSchedulesData(req, res, db));
 
 
 app.listen(3000, () => {
