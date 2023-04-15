@@ -1,12 +1,13 @@
 const grabStudentButtons = (req, res, db) => {
   const yearButton = parseInt(req.query.yearButton, 10);
   const blockButton = parseInt(req.query.blockButton, 10);
-console.log(yearButton, blockButton)
+  console.log(yearButton, blockButton)
   if (!isNaN(yearButton) && isNaN(blockButton)) {
     console.log("first")
     db.select('*')
       .from('students')
       .where('year', '=', yearButton)
+      .orderBy('last_name', 'asc')
       .then((data) => {
         res.json(data)
       })
@@ -18,6 +19,7 @@ console.log(yearButton, blockButton)
     db.select('*')
       .from('students')
       .where('block', '=', blockButton)
+      .orderBy('last_name', 'asc')
       .then((data) => {
         res.json(data)
       })
@@ -30,6 +32,7 @@ console.log(yearButton, blockButton)
       .from('students')
       .where('year', '=', yearButton)
       .andWhere('block', '=', blockButton)
+      .orderBy('last_name', 'asc')
       .then((data) => {
         res.json(data)
       })
@@ -40,6 +43,7 @@ console.log(yearButton, blockButton)
     console.log("fourth")
     db.select('*')
       .from('students')
+      .orderBy('last_name', 'asc')
       .then((data) => {
         res.json(data)
       })

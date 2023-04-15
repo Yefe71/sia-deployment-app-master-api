@@ -30,6 +30,15 @@ app.use(express.json());
 app.get('/grabStudents', (req, res) => grabStudentsData(req, res, db))
 app.get('/grabStudentsButtons', (req, res) => grabStudentButtons(req, res, db))
 
+
+
+
+
+
+
+
+
+
 app.get('/grabProfessors', (req, res) => grabProfessorsData(req, res, db))
 app.put('/updateProfessors', (req, res) => updateProfessorsData(req, res, db))
 

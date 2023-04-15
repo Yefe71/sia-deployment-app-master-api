@@ -11,7 +11,7 @@ const grabStudentsData = (req, res, db) => {
           COUNT(*) AS total_students, 
           ceil(COUNT(*)::FLOAT / ${numBlock}) AS target_block_size 
         FROM students
-        WHERE YEAR = ${year} -- Add the condition here
+        WHERE YEAR = ${year} 
       ),
       students_with_blocks AS (
         SELECT 
@@ -19,8 +19,7 @@ const grabStudentsData = (req, res, db) => {
           ceil(row_number() over (order by random())::float / block_sizes.target_block_size) AS block_number
         FROM students
         CROSS JOIN block_sizes
-        WHERE YEAR = ${year} -- Add the same condition here
-      )
+        WHERE YEAR = ${year} 
     UPDATE students sl
     SET 
       block = swb.block_number

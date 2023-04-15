@@ -9,8 +9,6 @@ for (const schedule of schedules) {
 }
 
   const schedulesObjects = schedules.map((schedule) => ({
-
-    
     id: schedule.id,
     color: schedule.color,
     start_date: schedule.startDate,
