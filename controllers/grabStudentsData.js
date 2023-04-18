@@ -20,6 +20,7 @@ const grabStudentsData = (req, res, db) => {
         FROM students
         CROSS JOIN block_sizes
         WHERE YEAR = ${year} 
+        )
     UPDATE students sl
     SET 
       block = swb.block_number
