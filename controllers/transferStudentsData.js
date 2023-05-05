@@ -1,6 +1,11 @@
 const transferStudentsData = async (req, res, db) => {
   
-    const studentId = req.query.studentId;
+    let studentId = req.query.studentId;
+    if (studentId.length > 4 && studentId.charAt(4) !== '-') {
+      const newStudentId = studentId.slice(0, 4) + '-' + studentId.slice(4);
+      studentId = newStudentId;
+    }
+
     console.log('Student ID:', studentId);
     
     try {

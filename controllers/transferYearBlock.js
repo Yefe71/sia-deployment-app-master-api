@@ -1,8 +1,15 @@
 const transferYearBlock = async (req, res, db) => {
   
-    const studentId = req.query.studentId;
+ 
+
+  let studentId = req.query.studentId;
+  if (studentId.length > 4 && studentId.charAt(4) !== '-') {
+    const newStudentId = studentId.slice(0, 4) + '-' + studentId.slice(4);
+    studentId = newStudentId;
+  }
+
+
     console.log('Student ID:', studentId);
-    
     try {
       const query = db('students')
         .select(db.raw("year || '-' || block as year_block"))
