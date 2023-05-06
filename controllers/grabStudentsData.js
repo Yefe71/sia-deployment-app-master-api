@@ -1,7 +1,7 @@
 const grabStudentsData = (req, res, db) => {
   const year = req.query.year; // get year from query parameter
   const numBlock = req.query.numBlock; // get block from query parameter
-  console.log(year, numBlock)
+  console.log(year, numBlock, "it's me")
 
   // First query: alter table to assign block numbers
   db.raw(`
