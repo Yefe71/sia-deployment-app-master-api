@@ -15,6 +15,7 @@ import transferStudentsData from './controllers/transferStudentsData.js'
 import dropStudentsData from './controllers/dropStudentsData.js'
 import transferYearBlock from './controllers/transferYearBlock.js'
 import transferStudent from './controllers/transferStudent.js'
+import addStudent from './controllers/addStudent.js'
 
 
 const db = knex({
@@ -52,6 +53,10 @@ app.put('/updateSchedules', (req, res) => updateSchedulesData(req, res, db));
 app.put('/transferStudent', (req, res) => transferStudent(req, res, db));
 app.put('/transferStudentName', (req, res) => transferStudentsData(req, res, db));
 app.put('/transferYearBlock', (req, res) => transferYearBlock(req, res, db));
+
+
+app.put('/addStudent', (req, res) => addStudent(req, res, db));
+
 
 app.put('/dropStudent', (req, res) => dropStudentsData(req, res, db));
 
