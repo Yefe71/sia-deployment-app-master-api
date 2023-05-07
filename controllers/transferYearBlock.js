@@ -12,7 +12,10 @@ const transferYearBlock = async (req, res, db) => {
     console.log('Student ID:', studentId);
     try {
       const query = db('students')
-        .select(db.raw("year || '-' || block as year_block"))
+        .select(        db.raw("year || '-' || block as year_block"),
+        'standing' // added this line to select the "standing" column
+      )
+        
         .where('student_id', '=', studentId)
         .orderBy('last_name', 'asc');
       
