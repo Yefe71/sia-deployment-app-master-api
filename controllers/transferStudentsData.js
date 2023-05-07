@@ -15,7 +15,7 @@ const transferStudentsData = async (req, res, db) => {
         .orderBy('last_name', 'asc');
       
     
-  
+
       const fullNames = await query;
     
       res.status(200).json(fullNames);

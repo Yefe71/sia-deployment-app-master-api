@@ -2,16 +2,18 @@ const transferStudent = async (req, res, db) => {
   
     let studentId = req.query.studentId;
     let newBlock = req.query.newBlock;
+    let editStudentName = req.query.editStudentName;
+    let transferStanding = req.query.transferStanding;
+    
 
    
-    
     if (studentId.length > 4 && studentId.charAt(4) !== '-') {
       const newStudentId = studentId.slice(0, 4) + '-' + studentId.slice(4);
       studentId = newStudentId;
     }
 
     newBlock = newBlock.split("-")[1];
-
+    console.log(studentId, newBlock, editStudentName, transferStanding)
  
   
     

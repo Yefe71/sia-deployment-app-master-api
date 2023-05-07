@@ -1,7 +1,10 @@
 const dropStudent = async (req, res, db) => {
   
     let dropStudentId = req.query.dropStudentId;
-  
+    if (dropStudentId.length > 4 && dropStudentId.charAt(4) !== '-') {
+        const newStudentId = dropStudentId.slice(0, 4) + '-' + dropStudentId.slice(4);
+        dropStudentId = newStudentId;
+      }
     try {
       const rowsAffected = await db('students')
         .where({ student_id: dropStudentId })
