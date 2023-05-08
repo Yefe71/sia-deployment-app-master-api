@@ -7,8 +7,9 @@ const addStudent = async (req, res, db) => {
   let addStudentFirst = req.query.addStudentFirst.toUpperCase();
   let addStudentMiddle = req.query.addStudentMiddle.toUpperCase();
   let addStudentStanding = req.query.addStudentStanding.toUpperCase();
+  let addStudentSuffix = req.query.addStudentSuffix.toUpperCase();
   
-  console.log(addStudentId, addStudentYear, addStudentBlock, addStudentLast, addStudentFirst, addStudentMiddle, addStudentStanding)
+  console.log(addStudentId, addStudentYear, addStudentBlock, addStudentLast, addStudentFirst, addStudentMiddle, addStudentStanding, addStudentSuffix)
   
   if (addStudentId.length > 4 && addStudentId.charAt(4) !== '-') {
     const newStudentId = addStudentId.slice(0, 4) + '-' + addStudentId.slice(4);
@@ -29,6 +30,7 @@ const addStudent = async (req, res, db) => {
               first_name: addStudentFirst,
               middle_name: addStudentMiddle,
               standing: addStudentStanding,
+              suffix: addStudentSuffix,
               year: addStudentYear,
               block: addStudentBlock,
           });

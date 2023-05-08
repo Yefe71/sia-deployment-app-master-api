@@ -10,7 +10,7 @@ const transferStudentsData = async (req, res, db) => {
   
   try {
     const query = db('students')
-      .select('last_name', 'first_name', 'middle_name')
+      .select('last_name', 'first_name', 'middle_name', 'suffix')
       .where('student_id', '=', studentId)
       .orderBy('last_name', 'asc');
 

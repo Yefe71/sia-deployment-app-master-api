@@ -4,6 +4,7 @@ const transferStudentNameEdit = async (req, res, db) => {
   let editStudentLast = req.query.editStudentLast;
   let editStudentFirst = req.query.editStudentFirst;
   let editStudentMiddle = req.query.editStudentMiddle;
+  let editStudentSuffix = req.query.editStudentSuffix;
   let transferStanding = req.query.transferStanding;
 
   if (studentId.length > 4 && studentId.charAt(4) !== '-') {
@@ -20,6 +21,7 @@ const transferStudentNameEdit = async (req, res, db) => {
         last_name: editStudentLast,
         first_name: editStudentFirst,
         middle_name: editStudentMiddle,
+        suffix: editStudentSuffix,
         standing: transferStanding,
       });
 
