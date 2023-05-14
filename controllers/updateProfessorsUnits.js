@@ -8,8 +8,8 @@ const updateProfessorsUnits = async (req, res, db) => {
 
     // For each sum, find the matching professor and update their current_units
     for (const sum of sums) {
-      const names = sum.professor_name.split(', ');
-
+      const names = sum.professor_name.split(', ').flatMap(name => name.split(' '));
+      console.log(names)
       await db('professors')
         .where({
           last_name: names[0],
