@@ -18,6 +18,8 @@ import transferStudent from './controllers/transferStudent.js'
 import addStudent from './controllers/addStudent.js'
 import dropStudent from './controllers/dropStudent.js'
 import transferStudentNameEdit from './controllers/transferStudentNameEdit.js'
+import compareUnits from './controllers/compareUnits.js'
+import updateProfessorsUnits from './controllers/updateProfessorsUnits.js'
 
 
 const db = knex({
@@ -61,6 +63,9 @@ app.put('/transferYearBlock', (req, res) => transferYearBlock(req, res, db));
 app.put('/addStudent', (req, res) => addStudent(req, res, db));
 app.put('/dropStudent', (req, res) => dropStudent(req, res, db));
 
+app.get('/compareUnits', (req, res) => compareUnits(req, res, db))
+
+app.put('/updateProfessorsUnits', (req, res) => updateProfessorsUnits(req, res, db));
 
 
 
