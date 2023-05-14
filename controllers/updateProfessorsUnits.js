@@ -6,17 +6,26 @@ const updateProfessorsUnits = async (req, res, db) => {
       .sum(db.raw('??::numeric', ['units'])) // cast units to numeric
       .groupBy('professor_name');
 
+    // Fetch all professors
+    const professors = await db('professors');
+
+    // Create a map of professors by name for faster lookup
+    const professorsByName = new Map(professors.map(prof => [`${prof.last_name}, ${prof.first_name} ${prof.middle_name}`, prof]));
+
     // For each sum, find the matching professor and update their current_units
     for (const sum of sums) {
-      const names = sum.professor_name.split(', ').flatMap(name => name.split(' '));
-      console.log(names)
-      await db('professors')
+      const professor = professorsByName.get(sum.professor_name);
+
+      // Update the matching professor
+      if (professor) {
+        await db('professors')
         .where({
-          last_name: names[0],
-          first_name: names[1],
-          middle_name: names[2] || null
+          last_name: professor.last_name,
+          first_name: professor.first_name,
+          middle_name: professor.middle_name
         })
-        .update({current_units: sum.sum});  // use sum.sum because sum function result is returned as 'sum'
+          .update({current_units: sum.sum});  // use sum.sum because sum function result is returned as 'sum'
+      }
     }
     
     res.status(200).send("Success");
