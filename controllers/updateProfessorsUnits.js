@@ -1,5 +1,10 @@
 const updateProfessorsUnits = async (req, res, db) => {
   try {
+    console.log("IVE BEEN CALLED!")
+
+    // Set current_units to zero for all professors
+    await db('professors').update({ current_units: 0 });
+
     // Calculate the sum of units for each professor in schedules table
     const sums = await db('schedules')
       .select('professor_name')
@@ -10,7 +15,7 @@ const updateProfessorsUnits = async (req, res, db) => {
     const professors = await db('professors');
 
     // Create a map of professors by name for faster lookup
-    const professorsByName = new Map(professors.map(prof => [`${prof.last_name}, ${prof.first_name} ${prof.middle_name}`, prof]));
+    const professorsByName = new Map(professors.map(prof => [`${prof.last_name}, ${prof.first_name} ${prof.middle_name || ''}`, prof]));
 
     // For each sum, find the matching professor and update their current_units
     for (const sum of sums) {
@@ -24,7 +29,7 @@ const updateProfessorsUnits = async (req, res, db) => {
           first_name: professor.first_name,
           middle_name: professor.middle_name
         })
-          .update({current_units: sum.sum});  // use sum.sum because sum function result is returned as 'sum'
+        .update({current_units: sum.sum});  // use sum.sum because sum function result is returned as 'sum'
       }
     }
     
