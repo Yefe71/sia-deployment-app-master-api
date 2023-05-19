@@ -20,6 +20,10 @@ import dropStudent from './controllers/dropStudent.js'
 import transferStudentNameEdit from './controllers/transferStudentNameEdit.js'
 import compareUnits from './controllers/compareUnits.js'
 import updateProfessorsUnits from './controllers/updateProfessorsUnits.js'
+import grabMajorCourses from './controllers/grabMajorCourses.js'
+import grabCoursesColors from './controllers/grabCoursesColors.js'
+import grabMinorsData from './controllers/grabMinorsData.js'
+
 
 
 const db = knex({
@@ -68,10 +72,12 @@ app.get('/compareUnits', (req, res) => compareUnits(req, res, db))
 app.put('/updateProfessorsUnits', (req, res) => updateProfessorsUnits(req, res, db));
 
 
+app.get('/grabMajorCourses', (req, res) => grabMajorCourses(req, res, db))
+app.get('/grabCoursesColors', (req, res) => grabCoursesColors(req, res, db))
 
-
-
+app.get('/grabMinorsData', (req, res) => grabMinorsData(req, res, db))
 
 app.listen(3000, () => {
     console.log('App is running in port 3000')   
 })
+
