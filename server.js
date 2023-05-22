@@ -28,6 +28,7 @@ import grabFormMajorMinor from './controllers/grabFormMajorMinor.js'
 import updateFormMajorMinor from './controllers/updateFormMajorMinor.js'
 import grabIrregulars from './controllers/grabIrregulars.js'
 import grabStudyPlans from './controllers/grabStudyPlans.js'
+import updateMinorsData from './controllers/updateMinorsData.js'
 
 
 
@@ -82,6 +83,10 @@ app.get('/grabMajorCourses', (req, res) => grabMajorCourses(req, res, db))
 app.get('/grabCoursesColors', (req, res) => grabCoursesColors(req, res, db))
 
 app.get('/grabMinorsData', (req, res) => grabMinorsData(req, res, db))
+app.put('/updateMinorsData', (req, res) => updateMinorsData(req, res, db));
+
+
+
 app.get('/grabMajorMinorCourses', (req, res) => grabMajorMinorCourses(req, res, db))
 
 
