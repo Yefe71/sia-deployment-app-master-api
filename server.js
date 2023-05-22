@@ -23,6 +23,10 @@ import updateProfessorsUnits from './controllers/updateProfessorsUnits.js'
 import grabMajorCourses from './controllers/grabMajorCourses.js'
 import grabCoursesColors from './controllers/grabCoursesColors.js'
 import grabMinorsData from './controllers/grabMinorsData.js'
+import grabMajorMinorCourses from './controllers/grabMajorMinorCourses.js'
+import grabFormMajorMinor from './controllers/grabFormMajorMinor.js'
+import updateFormMajorMinor from './controllers/updateFormMajorMinor.js'
+
 
 
 
@@ -76,6 +80,12 @@ app.get('/grabMajorCourses', (req, res) => grabMajorCourses(req, res, db))
 app.get('/grabCoursesColors', (req, res) => grabCoursesColors(req, res, db))
 
 app.get('/grabMinorsData', (req, res) => grabMinorsData(req, res, db))
+app.get('/grabMajorMinorCourses', (req, res) => grabMajorMinorCourses(req, res, db))
+
+
+app.get('/grabFormMajorMinor', (req, res) => grabFormMajorMinor(req, res, db))
+app.put('/updateFormMajorMinor', (req, res) => updateFormMajorMinor(req, res, db))
+
 
 app.listen(3000, () => {
     console.log('App is running in port 3000')   
