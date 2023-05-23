@@ -8,6 +8,7 @@ for (const schedule of schedules) {
   console.log(typeof(schedule.id), typeof(parseInt(schedule.actualUnits, 10)), typeof(schedule.year), typeof(schedule.block))
 }
 
+
   const schedulesObjects = schedules.map((schedule) => ({
     id: schedule.id,
     color: schedule.color,
@@ -22,7 +23,9 @@ for (const schedule of schedules) {
     actual_units: parseInt(schedule.actualUnits, 10),
     class_type: schedule.classType,
     room: schedule.room,
-    day: schedule.day
+    day: schedule.day,
+    // max_capacity: schedule.maxCapacity,
+    current_capacity: schedule.currentCapacity
   }));
 
   try {
