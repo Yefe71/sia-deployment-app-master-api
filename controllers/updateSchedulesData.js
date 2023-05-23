@@ -8,6 +8,12 @@ for (const schedule of schedules) {
   console.log(typeof(schedule.id), typeof(parseInt(schedule.actualUnits, 10)), typeof(schedule.year), typeof(schedule.block))
 }
 
+const capacityByYear = {
+  1: 45,
+  2: 55,
+  3: 50,
+  4: 30,
+};
 
   const schedulesObjects = schedules.map((schedule) => ({
     id: schedule.id,
@@ -24,7 +30,7 @@ for (const schedule of schedules) {
     class_type: schedule.classType,
     room: schedule.room,
     day: schedule.day,
-    // max_capacity: schedule.maxCapacity,
+    max_capacity: capacityByYear[schedule.year] || 0,
     current_capacity: schedule.currentCapacity
   }));
 
