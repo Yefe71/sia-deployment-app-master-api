@@ -26,10 +26,15 @@ const updateStudyPlans = async (req, res, db) => {
     await db('studyPlans').truncate(); // Clear the professors table before inserting new data
     await db('studyPlans').insert(generatedScheduleObjects);
 
+    // Fetch the updated data from the database
+    const updatedData = await db.select('*').from('studyPlans');
+
+    // Send the updated data back to the client
+    res.json(updatedData);
+
   } catch (error) {
     console.error(error);
     res.status(500).send({ message: error.message });
   }
 };
-
 export default updateStudyPlans;
