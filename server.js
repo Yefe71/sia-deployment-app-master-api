@@ -29,6 +29,7 @@ import updateFormMajorMinor from './controllers/updateFormMajorMinor.js'
 import grabIrregulars from './controllers/grabIrregulars.js'
 import grabStudyPlans from './controllers/grabStudyPlans.js'
 import updateMinorsData from './controllers/updateMinorsData.js'
+import updateStudyPlans from './controllers/updateStudyPlans.js'
 
 
 
@@ -96,7 +97,7 @@ app.put('/updateFormMajorMinor', (req, res) => updateFormMajorMinor(req, res, db
 app.get('/grabIrregulars', (req, res) => grabIrregulars(req, res, db))
 
 app.get('/grabStudyPlans', (req, res) => grabStudyPlans(req, res, db))
-
+app.put('/updateStudyPlans', (req, res) => updateStudyPlans(req, res, db));
 app.listen(3000, () => {
     console.log('App is running in port 3000')   
 })
