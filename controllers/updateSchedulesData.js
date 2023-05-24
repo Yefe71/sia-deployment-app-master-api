@@ -31,7 +31,8 @@ const capacityByYear = {
     room: schedule.room,
     day: schedule.day,
     max_capacity: capacityByYear[schedule.year] || 0,
-    current_capacity: schedule.currentCapacity
+    current_capacity: schedule.currentCapacity,
+    TBA: schedule.TBA
   }));
 
   try {
