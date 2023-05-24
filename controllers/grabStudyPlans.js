@@ -1,4 +1,6 @@
 const grabStudyPlans = (req, res, db) => {
+  console.log("grabbing study")
+
   db.select('*')
     .from('studyPlans')
     .then((data) => {

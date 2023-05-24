@@ -1,8 +1,12 @@
 const updateStudyPlans = async (req, res, db) => {
-  console.log(req.body, "UPDATE STUDY PLANS!!!!!!!!!!!!!!");
+  try {
+    console.log(req.body, "UPDATE STUDY PLANS!!!!!!!!!!!!!!");
 
-  const generatedSchedule = req.body;
+    if (!req.body) {
+      throw new Error('Request body is empty');
+    }
 
+    const generatedSchedule = req.body;
 
     const generatedScheduleObjects = generatedSchedule.map((schedule) => ({
       start_date: schedule.startDate,
@@ -21,6 +25,11 @@ const updateStudyPlans = async (req, res, db) => {
     console.log(generatedScheduleObjects);
     await db('studyPlans').truncate(); // Clear the professors table before inserting new data
     await db('studyPlans').insert(generatedScheduleObjects);
-  };
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: error.message });
+  }
+};
 
 export default updateStudyPlans;
