@@ -1,6 +1,6 @@
 const grabMinors = (req, res, db) => {
 
-  db.select('*').from('rooms')
+  db.select('*').from('minorCourses')
   .then((data) => {
     res.json(data)
   })
