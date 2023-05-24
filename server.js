@@ -8,7 +8,7 @@ import updateProfessorsData from './controllers/updateProfessorsData.js'
 import grabProfessorsNames from './controllers/grabProfessorsNames.js'
 import updateRoomsData from './controllers/updateRoomsData.js'
 import grabRoomsNames from './controllers/grabRoomsNames.js'
-import grabRoomsData from './controllers/grabRoomsData.js'
+import grabRoomsData from './controllers/grabMinors.js'
 import updateSchedulesData from './controllers/updateSchedulesData.js'
 import grabSchedulesData from './controllers/grabSchedulesData.js'
 import transferStudentsData from './controllers/transferStudentsData.js'
@@ -30,6 +30,7 @@ import grabIrregulars from './controllers/grabIrregulars.js'
 import grabStudyPlans from './controllers/grabStudyPlans.js'
 import updateMinorsData from './controllers/updateMinorsData.js'
 import updateStudyPlans from './controllers/updateStudyPlans.js'
+import grabMinors from './controllers/grabMinors.js'
 
 
 
@@ -98,6 +99,9 @@ app.get('/grabIrregulars', (req, res) => grabIrregulars(req, res, db))
 
 app.get('/grabStudyPlans', (req, res) => grabStudyPlans(req, res, db))
 app.put('/updateStudyPlans', (req, res) => updateStudyPlans(req, res, db));
+
+
+app.get('/grabMinors', (req, res) => grabMinors(req, res, db))
 app.listen(3000, () => {
     console.log('App is running in port 3000')   
 })
