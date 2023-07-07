@@ -5,27 +5,27 @@ const grabStudentsData = (req, res, db) => {
 
   // First query: alter table to assign block numbers
   db.raw(`
-    WITH 
-      block_sizes AS (
-        SELECT 
-          COUNT(*) AS total_students, 
-          ceil(COUNT(*)::FLOAT / ${numBlock}) AS target_block_size 
-        FROM students
-        WHERE YEAR = ${year} 
-      ),
-      students_with_blocks AS (
-        SELECT 
-          *,
-          ceil(row_number() over (order by random())::float / block_sizes.target_block_size) AS block_number
-        FROM students
-        CROSS JOIN block_sizes
-        WHERE YEAR = ${year} 
-        )
-    UPDATE students sl
-    SET 
-      block = swb.block_number
-    FROM students_with_blocks swb
-    WHERE swb.student_id = sl.student_id;
+      WITH 
+        block_sizes AS (
+          SELECT 
+            COUNT(*) AS total_students, 
+            ceil(COUNT(*)::FLOAT / ${numBlock}) AS target_block_size 
+          FROM students
+          WHERE YEAR = ${year} 
+        ),
+        students_with_blocks AS (
+          SELECT 
+            *,
+            ceil(row_number() over (order by random())::float / block_sizes.target_block_size) AS block_number
+          FROM students
+          CROSS JOIN block_sizes
+          WHERE YEAR = ${year} 
+          )
+      UPDATE students sl
+      SET 
+        block = swb.block_number
+      FROM students_with_blocks swb
+      WHERE swb.student_id = sl.student_id;
   `)
   .then(() => {
     // Second query: select data filtered by year and block
