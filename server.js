@@ -8,7 +8,6 @@ import updateProfessorsData from './controllers/updateProfessorsData.js'
 import grabProfessorsNames from './controllers/grabProfessorsNames.js'
 import updateRoomsData from './controllers/updateRoomsData.js'
 import grabRoomsNames from './controllers/grabRoomsNames.js'
-import grabRoomsData from './controllers/grabMinors.js'
 import updateSchedulesData from './controllers/updateSchedulesData.js'
 import grabSchedulesData from './controllers/grabSchedulesData.js'
 import transferStudentsData from './controllers/transferStudentsData.js'
@@ -31,6 +30,7 @@ import grabStudyPlans from './controllers/grabStudyPlans.js'
 import updateMinorsData from './controllers/updateMinorsData.js'
 import updateStudyPlans from './controllers/updateStudyPlans.js'
 import grabMinors from './controllers/grabMinors.js'
+import updateMinorsSchedulesData from './controllers/updateMinorsSchedulesData.js'
 
 
 
@@ -57,7 +57,7 @@ app.put('/updateProfessors', (req, res) => updateProfessorsData(req, res, db))
 
 app.get('/grabProfessorsNames', (req, res) => grabProfessorsNames(req, res, db))
 
-app.get('/grabRooms', (req, res) => grabRoomsData(req, res, db))
+app.get('/grabRooms', (req, res) => grabRoomsNames(req, res, db))
 app.put('/updateRooms', (req, res) => updateRoomsData(req, res, db))
 
 app.get('/grabRoomsNames', (req, res) => grabRoomsNames(req, res, db))
@@ -65,6 +65,7 @@ app.get('/grabRoomsNames', (req, res) => grabRoomsNames(req, res, db))
 
 app.get('/grabSchedules', (req, res) => grabSchedulesData(req, res, db))
 app.put('/updateSchedules', (req, res) => updateSchedulesData(req, res, db));
+app.put('/updateMinorsSchedules', (req, res) => updateMinorsSchedulesData(req, res, db));
 
 
 app.put('/transferStudent', (req, res) => transferStudent(req, res, db));
